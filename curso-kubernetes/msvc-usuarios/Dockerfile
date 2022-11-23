@@ -1,5 +1,5 @@
-#FROM openjdk:11.0.16
-FROM openjdk:11-jdk-alpine as builder
+FROM openjdk:11.0.16 as builder
+#FROM openjdk:11-jdk-alpine as builder
 WORKDIR /app/msvc-usuarios
 COPY ../pom.xml /app
 COPY ./.mvn ./.mvn
@@ -13,7 +13,7 @@ COPY ./src ./src
 RUN ./mvnw clean package -DskipTests
 
 
-FROM openjdk:11-jdk-alpine
+#FROM openjdk:11.0.16
 
 WORKDIR /app
 
