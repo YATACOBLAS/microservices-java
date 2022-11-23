@@ -1,7 +1,7 @@
 FROM openjdk:11.0.16 as builder
 #FROM openjdk:11-jdk-alpine as builder
 WORKDIR /app/msvc-usuarios
-COPY ./pom.xml /app
+COPY ./msvc-usuarios/pom.xml /app
 COPY ./msvc-usuarios/.mvn ./.mvn
 COPY ./msvc-usuarios/mvnw .
 COPY ./msvc-usuarios/pom.xml .
