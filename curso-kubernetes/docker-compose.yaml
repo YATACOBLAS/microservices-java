@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   mysql8:
+    container_name: mysql8
     image: mysql:8
     ports:
       - "3306:3306"
@@ -14,6 +15,7 @@ services:
       - spring
 
   postgres14:
+    container_name: postgres14
     image: postgres:14-alpine
     ports:
       - "5432:5432"
@@ -27,6 +29,7 @@ services:
       - spring
 
   msvc_usuarios:
+    container_name: msvc_usuarios
     image: usuarios:latest
     ports:
       - "8001:8001"
@@ -38,6 +41,7 @@ services:
     restart: always
 
   msvc_cursos:
+    container_name: msvc_cursos
     image: cursos:latest
     ports:
       - "8002:8002"
@@ -51,7 +55,10 @@ services:
 
 volumes:
   data-mysql:
+    name: data-mysql
   data-postgres:
+    name: data-postgres
 
 networks:
   spring:
+    name: spring
