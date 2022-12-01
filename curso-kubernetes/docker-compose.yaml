@@ -30,7 +30,7 @@ services:
 
   msvc_usuarios:
     container_name: msvc_usuarios
-    image: usuarios:latest
+    image: blascodes/usuarios:latest
     ports:
       - "8001:8001"
     #env_file: ./msvc-usuarios/.env
@@ -49,7 +49,7 @@ services:
 
   msvc_cursos:
     container_name: msvc_cursos
-    image: cursos:latest
+    image: blascodes/cursos:latest
     ports:
       - "8002:8002"
    # env_file:
