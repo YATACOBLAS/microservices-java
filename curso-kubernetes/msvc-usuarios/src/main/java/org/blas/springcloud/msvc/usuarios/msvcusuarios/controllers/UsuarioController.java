@@ -3,6 +3,7 @@ package org.blas.springcloud.msvc.usuarios.msvcusuarios.controllers;
 import org.blas.springcloud.msvc.usuarios.msvcusuarios.models.entity.Usuario;
 import org.blas.springcloud.msvc.usuarios.msvcusuarios.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -17,9 +18,17 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
 
+    @Autowired
+    private Environment env;
+//@GetMapping
+//public List<Usuario> listar(){        return service.listar();    }
+
     @GetMapping
-    public List<Usuario> listar(){
-        return service.listar();
+    public ResponseEntity<?> listar(){
+        Map<String,Object> body = new HashMap<>() ;
+        body.put("users",service.listar());
+        body.put("pod_info",env.getProperty("MY_POD_NAME") + ": "+ env.getProperty("MY_POD_IP"));
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/{id}")
